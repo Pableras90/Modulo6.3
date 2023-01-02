@@ -26,6 +26,8 @@ var myTeam = [
         availability: new Array(8).fill(true)
     },
 ];
+
+//Recorre ambos arrays y crea un nuevo array con el horario como propiedad
 function recorreArray(array1, array2) {
     for (var i = 0; i < array1.length; i++) {
         array1[i].timetable = [];
@@ -36,6 +38,7 @@ function recorreArray(array1, array2) {
     return array1;
 }
 
+//Genera aleatoriedad con !=0 verdadero, sino es falso
 function generarAleatorio(team) {
     for (prop in team) {
         for (var i = 0; i < team[prop].availability.length; i++) {
@@ -45,8 +48,6 @@ function generarAleatorio(team) {
         }
     }
 }
-
-
 
 
 function buscarLibre(team, timetable) {

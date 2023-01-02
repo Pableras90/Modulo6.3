@@ -1,0 +1,17 @@
+body {
+    font-family: 'Monsterrat', sans-serif;
+    font-weight: bold;
+    display: flexbox;
+}
+
+button {
+    padding: 5px;
+    margin: 5px 3px 12px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background-color: #000000;
+    color: white;
+}
+
