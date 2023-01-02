@@ -1,6 +1,3 @@
-var myArray = new Array(3).fill("Hola");
-
-
 var WORK_HOURS = [
     "08:00 - 09:00",
     "09:00 - 10:00",
@@ -11,7 +8,6 @@ var WORK_HOURS = [
     "15:00 - 16:00",
     "16:00 - 17:00"
 ];
-
 var myTeam = [
     {
         name: "María",
@@ -30,59 +26,55 @@ var myTeam = [
         availability: new Array(8).fill(true)
     },
 ];
-
-
-
-
-
-
-
 function recorreArray(array1, array2) {
     for (var i = 0; i < array1.length; i++) {
-        array1[i].propierty = [];
+        array1[i].timetable = [];
         for (var j = 0; j < array2.length; j++) {
-            array1[i].propierty[j] = array2[j];
+            array1[i].timetable.push(array2[j] + (array1[i].availability[j] ? " SI" : " NO"));
         }
-        
     }
     return array1;
 }
-console.log(recorreArray(myTeam, WORK_HOURS));
 
-for (prop in myTeam) {
-    var aleatorio = Math.floor(Math.random() * 2);
-    var disponibilidad = myTeam[prop].availability;
-    for (var i = 0; i < myTeam.length; i++) {
-        disponibilidad = aleatorio != 0 ? true : false;
+function generarAleatorio(team) {
+    for (prop in team) {
+        for (var i = 0; i < team[prop].availability.length; i++) {
+            var aleatorio = Math.floor(Math.random() * 2);
+            team[prop].availability[i] = aleatorio != 0;
+            
+        }
     }
-
-    console.log(disponibilidad);
-
 }
 
 
 
 
-
-
-/*function recorreDisponibilidad() {
-
-    for (var i = 0; i < myTeam.length; i++) {
-        var disponibilidad = myTeam[i].availability;
-        console.log(disponibilidad);
-
+function buscarLibre(team, timetable) {
+    var find = [0, 0, 0, 0, 0, 0, 0, 0];
+    for (var i = 0; i < team.length; i++) {
+        for (var j = 0; j < timetable.length; j++) {
+            if (team[i].availability[j]) {
+                find[j] += 1;
+                if (find[j] ===team.length) {
+                    console.log("Este horario esta libre ", team[i].timetable[j]);
+                }
+            }
+        }
     }
-}*/
+    return team;
+}
+
+generarAleatorio(myTeam);
+recorreArray(myTeam, WORK_HOURS);
+console.log(buscarLibre(myTeam, WORK_HOURS));
 
 
 
-/*var fillArray = (team, work) => {
-    for (var i = 0; i < myTeam.length; i++) {
-      myTeam[i].schedule = [];
-      for (var j = 0; j < WORK_HOURS.length; j++) {
-        myTeam[i].schedule[j] = WORK_HOURS[j]
-      }
-    }
-    return console.log(team)
-     }
-  fillArray(myTeam, WORK_HOURS);*/
+
+
+
+
+
+
+
+
