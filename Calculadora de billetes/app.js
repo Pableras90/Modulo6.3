@@ -11,8 +11,8 @@ console.log(restValue())
 function recorreArray(array) {
     var billetes = 0;
     for (var i = 0; i < array.length; i++) {
-        if (array[i]>=restValue()) {
-            billetes += array[i];
+        if (array[i] >= restValue()) {
+            billetes = push(array[i]);
         }
     }
     console.log(billetes)
