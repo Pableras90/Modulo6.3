@@ -1,21 +1,22 @@
-var total = () => parseInt(document.getElementById("total").value);
-var entrega = () => parseInt(document.getElementById("entrega").value);
-document.getElementById("calcular").addEventListener("click", recorreArray);
+var total = () => parseFloat(document.getElementById("total").value);
+var entrega = () => parseFloat(document.getElementById("entrega").value);
+document.getElementById("calcular").addEventListener("click", ()=>recorreArray(cash));
 
-var cambio = [200, 100, 50, 20, 10, 5]
+var cash = [200, 100, 50, 20, 10, 5, 2, 1, 0.50, 0.20, 0.10, 0.05, 0.02, 0.01]
 
-var restValue = () => parseInt((entrega() - total()));
-console.log(restValue())
+var restValue = () => parseFloat((entrega() - total()));
 
 
 function recorreArray(array) {
-    var billetes = 0;
-    for (var i = 0; i < array.length; i++) {
-        if (array[i] >= restValue()) {
-            billetes = push(array[i]);
+    var  cashChange = restValue();
+    var money = [];
+    while (cashChange !==0){
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] <= cashChange) {
+                cashChange = Number((cashChange-array[i]).toFixed(2));
+                money.push(array[i]);
+            }
         }
     }
-    console.log(billetes)
-}
-
-recorreArray(cambio);
+    console.log(money)
+};
